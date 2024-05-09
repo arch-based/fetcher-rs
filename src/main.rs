@@ -1,7 +1,6 @@
 use std::fs;
 use std::env;
 use std::process::Command;
-use colored::*;
 
 fn main() {
     let mem_info = fs::read_to_string("/proc/meminfo").unwrap();
@@ -69,13 +68,15 @@ fn main() {
         .unwrap();
     let pkgs = String::from_utf8_lossy(&output.stdout).trim().to_string();
 
-    println!("                    \x1B[1m{}@\x1B[1m{}", user.cyan(), hostname.cyan());
-    println!("{}","          \x1B[1m-----------------------------".cyan());
-    println!("\x1B[1m{} \x1B[1m{}", " OS ~~~~~~~~~~>".cyan(), os);
-    println!("\x1B[1m{} \x1B[1m{}", "󰌢 HOST: ~~~~~~~>".cyan(), host);
-    println!("\x1B[1m{} \x1B[1m{}", "󰅐 UPTIME: ~~~~~>".cyan(), uptime);
-    println!("\x1B[1m{} \x1B[1m{}", " KERNEL: ~~~~~>".cyan(), kernel);
-    println!("\x1B[1m{} \x1B[1m{}", " SHELL: ~~~~~~>".cyan(), shell);
-    println!("\x1B[1m{} \x1B[1m{}", " PACKAGES: ~~~>".cyan(), pkgs);
-    println!("\x1B[1m{} \x1B[1m{}", "󰍛 MEMORY: ~~~~~>".cyan(), memory);    
+    println!("                    \x1B[36m\x1B[1m{}\x1B[0m@\x1B[36m\x1B[1m{}\x1B[0m", user, hostname);
+    println!("{}","          \x1B[36m\x1B[1m-----------------------------");
+    println!("\x1b[36m\x1B[1m{}\x1B[0m \x1B[1m{}\x1B[0m", " OS ~~~~~~~~~~>", os);
+    println!("\x1b[36m\x1B[1m{}\x1B[0m \x1B[1m{}\x1B[0m", "󰌢 HOST: ~~~~~~~>", host);
+    println!("\x1b[36m\x1B[1m{}\x1B[0m \x1B[1m{}\x1B[0m", "󰅐 UPTIME: ~~~~~>", uptime);
+    println!("\x1b[36m\x1B[1m{}\x1B[0m \x1B[1m{}\x1B[0m", " KERNEL: ~~~~~>", kernel);
+    println!("\x1b[36m\x1B[1m{}\x1B[0m \x1B[1m{}\x1B[0m", " SHELL: ~~~~~~>", shell);
+    println!("\x1b[36m\x1B[1m{}\x1B[0m \x1B[1m{}\x1B[0m", " PACKAGES: ~~~>", pkgs);
+    println!("\x1b[36m\x1B[1m{}\x1B[0m \x1B[1m{}\x1B[0m", "󰍛 MEMORY: ~~~~~>", memory);
+    println!("");
+
 }
