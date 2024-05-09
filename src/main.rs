@@ -69,13 +69,13 @@ fn main() {
         .unwrap();
     let pkgs = String::from_utf8_lossy(&output.stdout).trim().to_string();
 
-    println!("                    {}@{}", user.cyan(), hostname.cyan());
-    println!("          -----------------------------");
-    println!("{} {}", " OS ~~~~~~~~~~>".cyan(), os);
-    println!("{} {}", "󰌢 HOST: ~~~~~~~>".cyan(), host);
-    println!("{} {}", "󰅐 UPTIME: ~~~~~>".cyan(), uptime);
-    println!("{} {}", " KERNEL: ~~~~~>".cyan(), kernel);
-    println!("{} {}", " SHELL: ~~~~~~>".cyan(), shell);
-    println!("{} {}", " PACKAGES: ~~~>".cyan(), pkgs);
-    println!("{} {}", "󰍛 MEMORY: ~~~~~>".cyan(), memory);    
+    println!("                    \x1B[1m{}@\x1B[1m{}", user.cyan(), hostname.cyan());
+    println!("{}","          \x1B[1m-----------------------------".cyan());
+    println!("\x1B[1m{} \x1B[1m{}", " OS ~~~~~~~~~~>".cyan(), os);
+    println!("\x1B[1m{} \x1B[1m{}", "󰌢 HOST: ~~~~~~~>".cyan(), host);
+    println!("\x1B[1m{} \x1B[1m{}", "󰅐 UPTIME: ~~~~~>".cyan(), uptime);
+    println!("\x1B[1m{} \x1B[1m{}", " KERNEL: ~~~~~>".cyan(), kernel);
+    println!("\x1B[1m{} \x1B[1m{}", " SHELL: ~~~~~~>".cyan(), shell);
+    println!("\x1B[1m{} \x1B[1m{}", " PACKAGES: ~~~>".cyan(), pkgs);
+    println!("\x1B[1m{} \x1B[1m{}", "󰍛 MEMORY: ~~~~~>".cyan(), memory);    
 }
