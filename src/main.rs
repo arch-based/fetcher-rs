@@ -1,6 +1,7 @@
 use std::fs;
 use std::env;
 use std::process::Command;
+use colored::*;
 
 fn main() {
     let mem_info = fs::read_to_string("/proc/meminfo").unwrap();
@@ -70,11 +71,11 @@ fn main() {
 
     println!("                    {}@{}", user, hostname);
     println!("          -----------------------------");
-    println!(" OS ~~~~~~~~~~> {}", os);
-    println!("󰌢 HOST: ~~~~~~~> {}", host);
-    println!("󰅐 UPTIME: ~~~~~> {}", uptime);
-    println!(" KERNEL: ~~~~~> {}", kernel);
-    println!(" SHELL: ~~~~~~> {}", shell);
-    println!(" PACKAGES: ~~~> {}", pkgs);
-    println!("󰍛 MEMORY: ~~~~~> {}", memory);    
+    println!("{} {}", " OS ~~~~~~~~~~>".cyan(), os);
+    println!("{} {}", "󰌢 HOST: ~~~~~~~>".cyan(), host);
+    println!("{} {}", "󰅐 UPTIME: ~~~~~>".cyan(), uptime);
+    println!("{} {}", " KERNEL: ~~~~~>".cyan(), kernel);
+    println!("{} {}", " SHELL: ~~~~~~>".cyan(), shell);
+    println!("{} {}", " PACKAGES: ~~~>".cyan(), pkgs);
+    println!("{} {}", "󰍛 MEMORY: ~~~~~>".cyan(), memory);    
 }
