@@ -19,7 +19,7 @@ fn main() {
 
     let mem_used = (mem_total - mem_avail) / 1024;
     let mem_total = mem_total / 1024;
-    let memory = format!("{} MiB / {} MiB", mem_used, mem_total);
+    let memory = format!("{}MiB / {}MiB", mem_used, mem_total);
 
     let user = env::var("USER").unwrap();
     let hostname = fs::read_to_string("/etc/hostname").unwrap().trim().to_string();
@@ -69,7 +69,7 @@ fn main() {
         .unwrap();
     let pkgs = String::from_utf8_lossy(&output.stdout).trim().to_string();
 
-    println!("                    {}@{}", user, hostname);
+    println!("                    {}@{}", user.cyan(), hostname.cyan());
     println!("          -----------------------------");
     println!("{} {}", " OS ~~~~~~~~~~>".cyan(), os);
     println!("{} {}", "󰌢 HOST: ~~~~~~~>".cyan(), host);
