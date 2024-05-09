@@ -77,4 +77,5 @@ fn main() {
     println!("\x1b[36m\x1B[1m{}\x1B[0m \x1B[1m{}\x1B[0m", " SHELL: ~~~~~~>", shell);
     println!("\x1b[36m\x1B[1m{}\x1B[0m \x1B[1m{}\x1B[0m", " PACKAGES: ~~~>", pkgs);
     println!("\x1b[36m\x1B[1m{}\x1B[0m \x1B[1m{}\x1B[0m", "󰍛 MEMORY: ~~~~~>", memory);
+    println!()
 }
