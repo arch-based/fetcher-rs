@@ -61,13 +61,20 @@ fn main() {
     let version = String::from_utf8_lossy(&output.stdout).trim().to_string();
 
     let host = format!("{} {}", name, version);
+    let output = Command::new("sh")
+        .arg("-c")
+        .arg("pacman -Qe | wc -l")
+        .output()
+        .unwrap();
+    let pkgs = String::from_utf8_lossy(&output.stdout).trim().to_string();
 
-    println!("{}@{}", user, hostname);
-    println!("-----------------------------");
-    println!("OS ~~~~~~~~~~> {}", os);
-    println!("SHELL: ~~~~~~> {}", shell);
-    println!("MEMORY: ~~~~~> {}", memory);
-    println!("KERNEL: ~~~~~> {}", kernel);
-    println!("UPTIME: ~~~~~> {}", uptime);
-    println!("HOST: ~~~~~~~> {}", host);
+    println!("                    {}@{}", user, hostname);
+    println!("          -----------------------------");
+    println!(" OS ~~~~~~~~~~> {}", os);
+    println!("󰌢 HOST: ~~~~~~~> {}", host);
+    println!("󰅐 UPTIME: ~~~~~> {}", uptime);
+    println!(" KERNEL: ~~~~~> {}", kernel);
+    println!(" SHELL: ~~~~~~> {}", shell);
+    println!(" PACKAGES: ~~~> {}", pkgs);
+    println!("󰍛 MEMORY: ~~~~~> {}", memory);    
 }
