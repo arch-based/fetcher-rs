@@ -17,14 +17,15 @@ $ sudo pacman -S rust
 $ sudo pacman -S rustup
 $ rustup default stable
 ```
+
 Since we aren't offering a binary in this Github Repo, we will be giving you the source code instead of the binary.
 ```
 $ git clone https://github.com/arch-based/fetcher-rs
 $ cd fetcher-rs/src
 $ cargo build
 ```
-To install the source code and build it using the A.U.R repo, use any aur-helper using paru or yay.
 
+To install the source code and build it using the A.U.R repo, use any aur-helper using paru or yay.
 ```
 # For paru:
 $ paru -S fetcher-rs
@@ -39,6 +40,7 @@ $ git clone https://aur.archlinux.org/fetcher-based.git ~/fetcher-based
 $ cd fetcher-based
 $ makepkg -si 
 ```
+
 To build the binary with the A.U.R repo, use any aur helper such as yay or paru:
 ```
 # For paru:
@@ -48,6 +50,7 @@ $ paru -S fetcher-rs-bin
 
 $ yay -S fetcher-rs-bin
 ```
+
 If you want to use the tarballs instead of the A.U.R repo and the github repo. You can do that by:
 ```
 $ sudo pacman -S wget
@@ -57,6 +60,7 @@ $ cd src
 $ cargo build
 $ cp -r ../target/debug/fetcher /usr/bin
 ```
+
 If you want to use the binary tarball:
 ```
 $ sudo pacman -S wget
@@ -64,6 +68,7 @@ $ wget https://github.com/arch-based/fetcher-rs/raw/main/fetcher-rs-bin.tar.gz
 $ tar xvf fetcher-rs-bin.tar.gz
 $ cp -r fetcher /usr/bin
 # Usage
+```
 
 You can use it with the command: fetcher which is inside of /usr/bin.
 ```
