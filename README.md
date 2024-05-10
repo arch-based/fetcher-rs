@@ -4,7 +4,9 @@
 
 # Description
 
-This rust re-implementation of fetcher  provides secure code and an immensely fast implementation of neofetch after its discontinuation. There were several alternatives such as fastfetch and hyfetch. Fastfetch is written in C, while hyfetch is in Python which is just slightly faster than Bash. We serve to beat fastfetch in Arch Linux in terms of speed and security. Because hyfetch is written in Python, it is said to be quite slow. The old implementation of this script in C++ is faster than both fastfetch and hyfetch. But since C++ has more vulnerabilities, I decided to use Rust. We serve binaries for the AUR, but this github repo only has the main resources, in order for it to compile. We also serve the process of compiling in the AUR using the fetcher-based-rs package in the A.U.R.
+This rust re-implementation of fetcher provides secure code and an immensely fast implementation of neofetch after its discontinuation. There were several alternatives such as fastfetch and hyfetch. 
+Fastfetch is written in C, while hyfetch is in Python which is just slightly faster than Bash. We serve to beat fastfetch in Arch Linux in terms of speed and security. Because hyfetch is written in Python, it is said to be quite slow. 
+The old implementation of this script in C++ is faster than both fastfetch and hyfetch. But since C++ has more vulnerabilities, I decided to use Rust. We serve binaries for the AUR, but this github repo only has the main resources, in order for it to compile. We also serve the process of compiling in the AUR using the fetcher-based-rs package in the A.U.R.
 
 # Installation
 
