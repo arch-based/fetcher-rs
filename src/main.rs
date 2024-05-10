@@ -1,5 +1,5 @@
-use std::fs;
 use std::env;
+use std::fs;
 use std::process::Command;
 
 fn main() {
@@ -21,7 +21,10 @@ fn main() {
     let memory = format!("{}MiB / {}MiB", mem_used, mem_total);
 
     let user = env::var("USER").unwrap();
-    let hostname = fs::read_to_string("/etc/hostname").unwrap().trim().to_string();
+    let hostname = fs::read_to_string("/etc/hostname")
+        .unwrap()
+        .trim()
+        .to_string();
     let shell = env::var("SHELL").unwrap();
     let shell = shell.split('/').last().unwrap();
 
@@ -68,14 +71,47 @@ fn main() {
         .unwrap();
     let pkgs = String::from_utf8_lossy(&output.stdout).trim().to_string();
 
-    println!("                    \x1B[36m\x1B[1m{}\x1B[0m@\x1B[36m\x1B[1m{}\x1B[0m", user, hostname);
-    println!("{}","          \x1B[36m\x1B[1m-----------------------------");
-    println!("\x1b[36m\x1B[1m{}\x1B[0m \x1B[1m{}\x1B[0m", " OS ~~~~~~~~~~>", os);
-    println!("\x1b[36m\x1B[1m{}\x1B[0m \x1B[1m{}\x1B[0m", "󰌢 HOST: ~~~~~~~>", host);
-    println!("\x1b[36m\x1B[1m{}\x1B[0m \x1B[1m{}\x1B[0m", "󰅐 UPTIME: ~~~~~>", uptime);
-    println!("\x1b[36m\x1B[1m{}\x1B[0m \x1B[1m{}\x1B[0m", " KERNEL: ~~~~~>", kernel);
-    println!("\x1b[36m\x1B[1m{}\x1B[0m \x1B[1m{}\x1B[0m", " SHELL: ~~~~~~>", shell);
-    println!("\x1b[36m\x1B[1m{}\x1B[0m \x1B[1m{}\x1B[0m", " PACKAGES: ~~~>", pkgs);
-    println!("\x1b[36m\x1B[1m{}\x1B[0m \x1B[1m{}\x1B[0m", "󰍛 MEMORY: ~~~~~>", memory);
+    let cyan = format!("{}", "\x1b[36m");
+    let bold = format!("{}", "\x1b[1m");
+    let reset = format!("{}", "\x1b[0m");
+
+    // The output
+
+    println!(
+        "{}{}{}{}{}@{}{}{}{}",
+        "                    ", cyan, bold, user, reset, cyan, bold, hostname, reset
+    );
+    println!(
+        "{}{}{}{}{}",
+        "          ", cyan, bold, "-----------------------------", reset
+    );
+    println!(
+        "{}{}{}{} {}{}{}",
+        cyan, bold, " OS ~~~~~~~~~~>", reset, bold, os, reset
+    );
+    println!(
+        "{}{}{}{} {}{}{}",
+        cyan, bold, "󰌢 HOST: ~~~~~~~>", reset, bold, host, reset
+    );
+    println!(
+        "{}{}{}{} {}{}{}",
+        cyan, bold, "󰅐 UPTIME: ~~~~~>", reset, bold, uptime, reset
+    );
+    println!(
+        "{}{}{}{} {}{}{}",
+        cyan, bold, " KERNEL: ~~~~~>", reset, bold, kernel, reset
+    );
+    println!(
+        "{}{}{}{} {}{}{}",
+        cyan, bold, " SHELL: ~~~~~~>", reset, bold, shell, reset
+    );
+    println!(
+        "{}{}{}{} {}{}{}",
+        cyan, bold, " PACKAGES: ~~~>", reset, bold, pkgs, reset
+    );
+    println!(
+        "{}{}{}{} {}{}{}",
+        cyan, bold, "󰍛 MEMORY: ~~~~~>", reset, bold, memory, reset
+    );
     println!()
 }
