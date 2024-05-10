@@ -10,16 +10,19 @@ This rust re-implementation of fetcher provides secure code and an immensely fas
  
 Fastfetch is written in C, while hyfetch is in Python which is just slightly faster than Bash. We serve to beat fastfetch in Arch Linux in terms of speed and security. Because hyfetch is written in Python, it is said to be quite slow. 
 
-The old implementation of this script in C++ is faster than both fastfetch and hyfetch. But since C++ has more vulnerabilities, I decided to use Rust. We serve binaries for the AUR, but this github repo only has the main resources, in order for it to compile. We also serve the process of compiling in the AUR using the fetcher-based-rs package in the A.U.R.
+The old implementation of this script in C++ is faster than both fastfetch and hyfetch. But since C++ has more vulnerabilities, I decided to use Rust. This github repo serve tarballs for the AUR, and the main resources, in order for it to compile. I also serve the process of compiling in the AUR using the fetcher-based-rs package in the A.U.R.
 
 # Installation
 
 Before installing & compiling, make sure to install the proper dependencies such as rust/rustup. But since, the A.U.R package installs the dependencies you may not need to do this.
 ```
-$ sudo pacman -S rust
-# Using rustup:
-$ sudo pacman -S rustup
-$ rustup default stable
+--  Using rust  --
+# pacman -S wget
+# pacman -S rust
+
+--  Using rustup  --
+# pacman -S rustup
+$ rustup default stable # This is used when you have an error in compiling with rustup.
 ```
 
 Since we aren't offering a binary in this Github Repo, we will be giving you the source code instead of the binary.
@@ -31,11 +34,11 @@ $ cargo build
 
 To install the source code and build it using the A.U.R repo, use any aur-helper using paru or yay.
 ```
-# For paru:
-$ paru -S fetcher-rs
+-- For paru:
+$ paru -S fetcher-based-rs
 
-# For yay:
-$ yay -S fetcher-rs
+-- For yay:
+$ yay -S fetcher-based-rs
 ```
 
 If you'd like to use the A.U.R repo manually, use this method:
@@ -49,10 +52,10 @@ To build the binary with the A.U.R repo, use any aur helper such as yay or paru:
 ```
 # For paru:
 
-$ paru -S fetcher-rs-bin
+$ paru -S fetcher-based-rs-bin
 # For yay:
 
-$ yay -S fetcher-rs-bin
+$ yay -S fetcher-based-rs-bin
 ```
 
 If you want to use the tarballs instead of the A.U.R repo and the github repo. You can do that by:
@@ -67,7 +70,6 @@ $ cp -r ../target/debug/fetcher /usr/bin
 
 If you want to use the binary tarball:
 ```
-$ sudo pacman -S wget
 $ wget https://github.com/arch-based/fetcher-rs/raw/main/fetcher-rs-bin.tar.gz
 $ tar xvf fetcher-rs-bin.tar.gz
 $ cp -r fetcher /usr/bin
