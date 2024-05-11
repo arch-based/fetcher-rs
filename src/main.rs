@@ -2,6 +2,11 @@ use std::env;
 use std::fs;
 use std::process::Command;
 
+// Constants for color codes
+const CYAN: &str = "\x1b[36m";
+const BOLD: &str = "\x1b[1m";
+const RESET: &str = "\x1b[0m";
+
 // Function to execute shell commands
 fn execute_command(command: &str) -> String {
     let output = Command::new("sh")
@@ -11,6 +16,14 @@ fn execute_command(command: &str) -> String {
         .expect("Failed to execute command");
 
     String::from_utf8_lossy(&output.stdout).trim().to_string()
+}
+
+// Function to print formatted output
+fn print_output(label: &str, value: &str) {
+    println!(
+        "{}{}{}{} {}{}{}",
+        CYAN, BOLD, label, RESET, BOLD, value, RESET
+    );
 }
 
 fn main() {
@@ -53,47 +66,22 @@ fn main() {
     let host = format!("{} {}", name, version);
     let pkgs = execute_command("pacman -Qe | wc -l");
 
-    let cyan = format!("{}", "\x1b[36m");
-    let bold = format!("{}", "\x1b[1m");
-    let reset = format!("{}", "\x1b[0m");
-
     // The output
 
     println!(
         "{}{}{}{}{}@{}{}{}{}",
-        "                    ", cyan, bold, user, reset, cyan, bold, hostname, reset
+        "                    ", CYAN, BOLD, user, RESET, CYAN, BOLD, hostname, RESET
     );
     println!(
         "{}{}{}{}{}",
-        "          ", cyan, bold, "-----------------------------", reset
+        "          ", CYAN, BOLD, "-----------------------------", RESET
     );
-    println!(
-        "{}{}{}{} {}{}{}",
-        cyan, bold, " OS ~~~~~~~~~~>", reset, bold, os, reset
-    );
-    println!(
-        "{}{}{}{} {}{}{}",
-        cyan, bold, "󰌢 HOST: ~~~~~~~>", reset, bold, host, reset
-    );
-    println!(
-        "{}{}{}{} {}{}{}",
-        cyan, bold, "󰅐 UPTIME: ~~~~~>", reset, bold, uptime, reset
-    );
-    println!(
-        "{}{}{}{} {}{}{}",
-        cyan, bold, " KERNEL: ~~~~~>", reset, bold, kernel, reset
-    );
-    println!(
-        "{}{}{}{} {}{}{}",
-        cyan, bold, " SHELL: ~~~~~~>", reset, bold, shell, reset
-    );
-    println!(
-        "{}{}{}{} {}{}{}",
-        cyan, bold, " PACKAGES: ~~~>", reset, bold, pkgs, reset
-    );
-    println!(
-        "{}{}{}{} {}{}{}",
-        cyan, bold, "󰍛 MEMORY: ~~~~~>", reset, bold, memory, reset
-    );
+    print_output(" OS ~~~~~~~~~~>", &os);
+    print_output("󰌢 HOST: ~~~~~~~>", &host);
+    print_output("󰅐 UPTIME: ~~~~~>", &uptime);
+    print_output(" KERNEL: ~~~~~>", &kernel);
+    print_output(" SHELL: ~~~~~~>", shell);
+    print_output(" PACKAGES: ~~~>", &pkgs);
+    print_output("󰍛 MEMORY: ~~~~~>", &memory);
     println!()
 }
