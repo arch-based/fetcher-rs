@@ -12,7 +12,7 @@ Fastfetch is written in C, while hyfetch is in Python which is just slightly fas
 
 The old implementation of this script in C++ is faster than both fastfetch and hyfetch. But since C++ has more vulnerabilities, I decided to use Rust. This github repo serve tarballs for the AUR, and the main resources, in order for it to compile. I also serve the process of compiling in the AUR using the fetcher-based-rs package in the A.U.R.
 
-_**This project is done for now, because Rust really makes your emotions feel like your project is done, while in other programming languages it requires a lot of time to finish one project. While in rust, i'm done! :)**_
+_**This project is done for now as Rust can finish projects fast, while in other programming languages it requires a lot of time to finish one project. While in rust, i'm done! :)**_
 
 # Installation
 
